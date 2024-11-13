@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -17,8 +16,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
 import Image from "next/image";
-import { fileURLToPath } from "url";
 import { Models } from "node-appwrite";
 import { actionsDropdownItems } from "@/constants";
 import Link from "next/link";

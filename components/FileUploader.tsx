@@ -3,7 +3,7 @@
 import React, { MouseEvent, useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "./ui/button";
-import { cn, convertFileToUrl, getFileTypesParams } from "@/lib/utils";
+import { cn, convertFileToUrl } from "@/lib/utils";
 import Image from "next/image";
 import { getFileType } from "@/lib/utils";
 import Thumbnail from "./Thumbnail";
@@ -11,7 +11,6 @@ import { MAX_FILE_SIZE } from "@/constants";
 import { useToast } from "@/hooks/use-toast";
 import { uploadFile } from "@/lib/actions/file.actions";
 import { usePathname } from "next/navigation";
-import { fileURLToPath } from "url";
 
 interface Props {
   ownerId: string;
@@ -64,7 +63,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   const handleRemoveFile = (
-    e: MouseEvent<HTMLImageElement, MouseEvent>,
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
     fileName: string
   ) => {
     e.stopPropagation();
@@ -74,7 +73,7 @@ const FileUploader = ({ ownerId, accountId, className }: Props) => {
   return (
     <div {...getRootProps()} className="cursor-pointer ">
       <input {...getInputProps()} />
-      <Button type="button" className={cn("uploader-button")}>
+      <Button type="button" className={cn("uploader-button", className)}>
         <Image
           src="/assets/icons/upload.svg"
           alt="upload"
